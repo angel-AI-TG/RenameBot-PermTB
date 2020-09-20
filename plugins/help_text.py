@@ -44,13 +44,22 @@ async def help_user(bot, update):
     )
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["start"]))
-async def start(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.START_TEXT,
-        reply_to_message_id=update.message_id
+async def start(bot, m):
+    await m.reply_text(
+        text=f"🤖 Hey there! I am a File Renamer Bot.\n\n❔ If you have any questions about how to use me please give me /help... \n\n🤖 Other capable bots like me can be found click here on.\n\n💗 This is My Channel @MalayaliAll Please Join.\n\n🛡 My Support Group is @MalayaliTGInfos Please",
+        quote=True,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('💘 Join Channel 💘', url='http://t.me/MalayaliAll'),
+                    InlineKeyboardButton('👥 Support group 👥', url='http://t.me/MalayaliTGinfos')
+                ],
+                [
+                    InlineKeyboardButton('YouTube Channel', url='https://www.youtube.com/channel/UCNGIL58ODGS-zCd9jBIUCiQ'),
+                    InlineKeyboardButton('🔰 Links Bot 🔰', url='http://t.me/MalayaliLinksBot')
+                ]
+            ]
+        )
     )
 
 
